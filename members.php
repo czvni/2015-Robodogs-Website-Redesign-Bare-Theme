@@ -35,9 +35,9 @@ a {
 }
 #calendar {
 	border: solid;
-	margin: 8px 10px;
-	position: absolute;
-	right: 0px; top: 203;
+	margin: 0px 10px;
+	position: relative;
+	float:right;
 	border-radius: 10px;
 	width:45%;
 }
