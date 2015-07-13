@@ -103,7 +103,7 @@ $(window).bind("orientationchange", ScaleSlider);
                 width: 45px;
                 height: 45px;
                 cursor: pointer;
-                background: url(../img/a01.png) no-repeat;
+                background: url(/wp-content/themes/RoboTheme/a01.png) no-repeat;
                 overflow: hidden;
                 top: 123px;
             }
@@ -123,4 +123,6 @@ $(window).bind("orientationchange", ScaleSlider);
         </span>
 </div>
 </div>
+<script src="/wp-content/themes/RoboTheme/jssor.js"></script>
+<script src="/wp-content/themes/RoboTheme/jssor.slider.js"></script>
 <?php get_footer(); ?>
