@@ -13,7 +13,7 @@ Template Name: home
 			<li><img src="/wp-content/themes/RoboTheme/slideshow_images/2.jpg"/></li>
 			<li><img src="/wp-content/themes/RoboTheme/slideshow_images/3.jpg"/></li>
 		</ul>
-		<div id="caption"></div>
+		<div id="caption"><h2>Welcome to First!</h2><p>We are FIRST team 435 the robodogs: a fun loving, hard working group of high school students who build a robot each year to compete in FIRST.</p></div>
 	</div>
 	<div class = "rss_feed">
 	</div>
