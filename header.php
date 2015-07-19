@@ -1,46 +1,44 @@
-    <html>
-	<head>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-        <?php
-			global $color;
-			$url = $_SERVER['REQUEST_URI'];
-			if (preg_match("/divisions/", $url)){
-				$color = "#80b3ff";
-			}
-			elseif (preg_match("/robot_designs/", $url)){
-				$color = "#8aa193";
-			}
-			elseif (preg_match("/about_us/", $url)){
-				$color = "#ffbc7d";
-			}
-			elseif (preg_match("/members/", $url)){
-				$color = "#274379";
-			}
-			elseif (preg_match("/sponsors/", $url)){
-				$color = "#caacf6";
-			}
-			else{
-				$color = "#a9a29c";
-			}
-            
-			
-        ?>
-		<title>Robodogs Team 435</title>
-        <link rel="stylesheet" href="/wp-content/themes/RoboTheme/style.css">
-    </head>
-    <body>
-	<div id = "wrapper">
-		<div id = "header" class = "header_container" style="">
-			<div class="header"><h1 style="color:#001D55;">Team435</h1><h1 class="commodoreFont" style="color:#1F5C1F;"> Robodogs</h1></div>
-				<nav>
-					<ul>
-						<li><a href="/"><img src="/wp-content/themes/RoboTheme/home-icon.svg"><?php if(preg_match("/[a-zA-Z]/",$_SERVER['REQUEST_URI'])){echo "<div></div>";}?></a></li>
-						<li><a href="/index.php/divisions"><img src="/wp-content/themes/RoboTheme/divisions-icon.svg"/><?php if(!preg_match("/divisions/",$_SERVER['REQUEST_URI'])){echo "<div></div>";}?></a></li>
-						<li><a href="/index.php/robot_designs"><img src="/wp-content/themes/RoboTheme/robot-design-icon.svg"/><?php if(!preg_match("/robot_design/",$_SERVER['REQUEST_URI'])){echo "<div></div>";}?></a></li>
-						<li><a href="/index.php/members"><img src="/wp-content/themes/RoboTheme/members-icon.svg"/><?php if(!preg_match("/members/",$_SERVER['REQUEST_URI'])){echo "<div></div>";}?></a></li>
-						<li><a href="/index.php/about_us"><img src="/wp-content/themes/RoboTheme/about-us-icon.svg"/><?php if(!preg_match("/about_us/",$_SERVER['REQUEST_URI'])){echo "<div></div>";}?></a></li>
-						<li><a href="/index.php/sponsors"><img src="/wp-content/themes/RoboTheme/sponsors-icon.svg"/><?php if(!preg_match("/sponsors/",$_SERVER['REQUEST_URI'])){echo "<div></div>";}?></a></li>
-					</ul>
-				</nav>
-				<div class="under_accent" style= "background-color:<?php echo $color; ?>; margin-top: 17px"></div>
-		</div>
+<?php
+ 
+$mobile_browser = '0';
+ 
+if (preg_match('/(up.browser|up.link|mmp|symbian|smartphone|midp|wap|phone|android)/i', strtolower($_SERVER['HTTP_USER_AGENT']))) {
+    $mobile_browser++;
+}
+ 
+if ((strpos(strtolower($_SERVER['HTTP_ACCEPT']),'application/vnd.wap.xhtml+xml') > 0) or ((isset($_SERVER['HTTP_X_WAP_PROFILE']) or isset($_SERVER['HTTP_PROFILE'])))) {
+    $mobile_browser++;
+}    
+ 
+$mobile_ua = strtolower(substr($_SERVER['HTTP_USER_AGENT'], 0, 4));
+$mobile_agents = array(
+    'w3c ','acs-','alav','alca','amoi','audi','avan','benq','bird','blac',
+    'blaz','brew','cell','cldc','cmd-','dang','doco','eric','hipt','inno',
+    'ipaq','java','jigs','kddi','keji','leno','lg-c','lg-d','lg-g','lge-',
+    'maui','maxo','midp','mits','mmef','mobi','mot-','moto','mwbp','nec-',
+    'newt','noki','oper','palm','pana','pant','phil','play','port','prox',
+    'qwap','sage','sams','sany','sch-','sec-','send','seri','sgh-','shar',
+    'sie-','siem','smal','smar','sony','sph-','symb','t-mo','teli','tim-',
+    'tosh','tsm-','upg1','upsi','vk-v','voda','wap-','wapa','wapi','wapp',
+    'wapr','webc','winw','winw','xda ','xda-');
+ 
+if (in_array($mobile_ua,$mobile_agents)) {
+    $mobile_browser++;
+}
+ 
+if (strpos(strtolower($_SERVER['ALL_HTTP']),'OperaMini') > 0) {
+    $mobile_browser++;
+}
+ 
+if (strpos(strtolower($_SERVER['HTTP_USER_AGENT']),'windows') > 0) {
+    $mobile_browser = 0;
+}
+ 
+if ($mobile_browser > 0) {
+   include 'header-mobile.php';
+}
+else {
+   include 'header-normal.php';
+}   
+ 
+?>
